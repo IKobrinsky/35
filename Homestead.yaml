@@ -1,0 +1,59 @@
+---
+ip: "192.168.10.42"
+memory: 2048
+cpus: 2
+provider: virtualbox
+name: PHP Backend
+
+#authorize: ~/.ssh/id_rsa.pub
+
+#keys:
+#    - ~/.ssh/id_rsa
+
+folders:
+    - map: c:\HashiCorp\Vagrant\homestead\Homestead\code 
+      to: /home/vagrant/code
+
+sites:
+    - map: application.dev
+      to: /home/vagrant/code/public
+
+databases:
+    - homestead
+
+features:
+    - mysql: false
+    - mariadb: false
+    - postgresql: false
+    - ohmyzsh: false
+    - webdriver: false
+
+ports:
+    - send: 80
+      to: 80
+    - send: 443
+      to: 4430
+    - send: 33060 # MySQL/MariaDB
+      to: 3307
+    - send: 22
+      to: 2242
+
+#services:
+#    - enabled:
+#          - "mysql"
+ #   - disabled:
+  #      - "postgresql@11-main"
+
+#ports:
+#    - send: 33060 # MySQL/MariaDB
+#      to: 3306
+#    - send: 4040
+#      to: 4040
+#    - send: 54320 # PostgreSQL
+#      to: 5432
+#    - send: 8025 # Mailhog
+#      to: 8025
+#    - send: 9600
+#      to: 9600
+#    - send: 27017
+#      to: 27017
